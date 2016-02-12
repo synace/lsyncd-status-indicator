@@ -1,4 +1,4 @@
-# lsyncd-state-indicator
+# lsyncd-status-indicator
 
 lsyncd Monitor Applet for Cinnamon. A cinnamon applet for launching and checking the state of an lsyncd configuration.
 
