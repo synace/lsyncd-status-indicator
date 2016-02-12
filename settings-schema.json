@@ -1,0 +1,36 @@
+{
+    "refresh_int": {
+        "type": "scale",
+        "default": 5,
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "description": "Refresh interval (sec):  "
+    },
+    
+    "status_file" : {
+        "type" : "filechooser",
+        "description" : "Status file ",
+        "default" : "/run/shm/lsyncd.status",
+        "select-dir" : false
+    },
+    
+    "config_file" : {
+        "type" : "filechooser",
+        "description" : "Config file ",
+        "default" : "",
+        "select-dir" : false
+    },
+
+    "mount_command" : {
+        "type" : "entry",
+        "description" : "Mount command",
+        "default" : ""
+    },
+    
+    "unmount_command" : {
+        "type" : "entry",
+        "description" : "UnMount command",
+        "default" : ""
+    }
+}

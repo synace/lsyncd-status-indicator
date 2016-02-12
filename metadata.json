@@ -1,0 +1,6 @@
+{
+    "last-edited": "1455215227",
+    "description": "Probes for the state of a certain lsyncd checking the status file",
+    "uuid": "lsyncd-status@synace",
+    "name": "Lsyncd Status"
+}
