@@ -196,6 +196,7 @@ MyApplet.prototype = {
                 count = matches[1];
             }
             if (count == null) {
+                this.set_applet_label('');
                 this.set_applet_icon_name("emblem-unreadable");
                 this.set_applet_tooltip('Unable to read status file!');
                 this._syncing = 0;
@@ -204,27 +205,28 @@ MyApplet.prototype = {
                     this.notify("LSyncD: Error", "Unable read status file");
                 }
             } else if (count == 0) {
+                this.set_applet_label('');
                 this.set_applet_icon_name("emblem-ubuntuone-synchronized");
                 this.set_applet_tooltip('In Sync! Last update: ' + ageDateStr);
                 if (this._syncing) {
                     this.notify("LSyncD: Sync complete", ageDateStr);
                 }
                 this._syncing = 0;
-                this.set_applet_label('');
             } else if (count > 0) {
                 var text = '';
                 matches = status.match(/(wait|active|block) [^\n]+/g);
                 for (var i = 0; i < matches.length; i++) {
                     text = text + matches[i] + "\n";
                 }
-                this.set_applet_tooltip('Syncing ' + count + ' items...' + "\n\n" + text);
                 this.set_applet_label(count.toString());
+                this.set_applet_tooltip('Syncing ' + count + ' items...' + "\n\n" + text);
                 if (!this._syncing) {
                     this._syncing = 1;
                     this.set_applet_icon_name("emblem-ubuntuone-updating");
                     this.notify("LSyncD: Syncing " + count + " items...", text);
                 }
             } else {
+                this.set_applet_label('');
                 this.set_applet_icon_name("emblem-unreadable");
                 this.set_applet_tooltip("Unknown status... \n\n" + status);
                 if (this._error != 'status-unknown') {
@@ -234,6 +236,7 @@ MyApplet.prototype = {
                 this._syncing = 0;
             }
         } else if (running && (this._opt_configFile == null || !this._opt_configFile.length)) {
+            this.set_applet_label('');
             this.set_applet_icon_name("emblem-unreadable");
             this.set_applet_tooltip('No config file specified!');
             if (this._error != 'config-empty') {
@@ -242,6 +245,7 @@ MyApplet.prototype = {
             }
             this._syncing = 0;
         } else if (running && (this._opt_statusFile == null || !this._opt_statusFile.length)) {
+            this.set_applet_label('');
             this.set_applet_icon_name("emblem-unreadable");
             this.set_applet_tooltip('No status file specified!');
             if (this._error != 'status-empty') {
@@ -250,6 +254,7 @@ MyApplet.prototype = {
             }
             this._syncing = 0;
         } else {
+            this.set_applet_label('');
             this.set_applet_icon_name("emblem-unreadable");
             this.set_applet_tooltip('Not running! Start sync to monitor.');
             this._syncing = 0;
